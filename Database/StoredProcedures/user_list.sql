@@ -8,7 +8,6 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE `user_list`(IN `idUser` INT, IN `nmuser` VARCHAR(255), IN `createTaskOnDate` DATE) 
-NOT DETERMINISTIC READS SQL DATA SQL SECURITY DEFINER 
    SELECT 
        id_user,
 	   nm_user ,
@@ -19,6 +18,6 @@ NOT DETERMINISTIC READS SQL DATA SQL SECURITY DEFINER
    FROM `Users` 
    WHERE `idUser` IS NOT NULL OR id_user = `idUser`
 		 AND `nmuser`  IS NOT NULL OR nm_user = `nmuser`   
-		 AND `createTaskOnDate`  IS NOT NULL OR createTaskOnDate = `createTaskOnDate` 
+		 AND `createTaskOnDate`  IS NOT NULL OR createTaskOnDate = `createTaskOnDate` ;
 $$
   DELIMITER ;
