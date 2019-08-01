@@ -16,8 +16,7 @@ CREATE PROCEDURE `user_list`(IN `idUser` INT, IN `nmuser` VARCHAR(255), IN `crea
 	   lastModifiedOnDate DATE 
        
    FROM `Users` 
-   WHERE `idUser` IS NOT NULL OR id_user = `idUser`
-		 AND `nmuser`  IS NOT NULL OR nm_user = `nmuser`   
-		 AND `createTaskOnDate`  IS NOT NULL OR createTaskOnDate = `createTaskOnDate` ;
+   WHERE nm_user LIKE `nmuser`
+		 AND  createTaskOnDate = `createTaskOnDate` ;
 $$
   DELIMITER ;
