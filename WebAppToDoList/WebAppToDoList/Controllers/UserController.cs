@@ -13,6 +13,10 @@ namespace WebAppToDoList.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
+        public UserController() {
+
+        }
+
         [HttpGet]
         [Route("GetUsers")]
         public HttpResponseMessage GetAllUsers([FromBody] GetUserViewModel user) {
