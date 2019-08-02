@@ -15,6 +15,7 @@ namespace ToDoList.Database
     {
         private static  ToDoList_DB instance = new ToDoList_DB();
         public DbConnection singleton = null;
+        public static readonly string DB_CONFIG = "Task_DB";
         private IDbConnection _connection;
 
 
@@ -27,7 +28,13 @@ namespace ToDoList.Database
         public static string ConnectionStringWebAPI()
         {
             
-            return System.Configuration.ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings["Task_DB"]].ConnectionString.ToString();
+           var stringConnection = Configuration.ConfigurationManager.ConnectionStrings[ConfigurationManager.AppSettings[DB_CONFIG]];
+            
+            if (stringConnection == null) {
+                throw new  Exception(  $"ConnectionString doesnt found: {DB_CONFIG}");
+            }
+            
+              return stringConnection.ConnectionString;
         }
 
         public static ToDoList_DB getInstance() {
