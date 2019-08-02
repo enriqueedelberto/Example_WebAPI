@@ -1,0 +1,7 @@
+/packages
+/TestResults
+/obj
+/bin
+packages.config
+Web.Debug.config
+Web.Release.config

@@ -120,9 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetTaskViewModel.cs" />
+    <Compile Include="Models\GetUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +140,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoList.Entities\ToDoList.Entities.csproj">
+      <Project>{6CB2AD1E-D54E-4E88-A739-E430524862F0}</Project>
+      <Name>ToDoList.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToDoListDatabase\ToDoList.Database.csproj">
+      <Project>{B1FB2387-D624-4CB3-9018-AEE62E9395F2}</Project>
+      <Name>ToDoList.Database</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
