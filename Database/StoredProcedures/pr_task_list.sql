@@ -25,7 +25,10 @@ CREATE PROCEDURE pr_task_list
 		 @idUser INT, 
 		 @titletask VARCHAR(255), 
 		 @statustask VARCHAR(255), 
-		 @createTaskOnDate DATE
+		 @createTaskOnDate DATE,
+	@PageNumber	INT = 1,
+	@PageSize	INT = 10
+		 
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -36,7 +39,8 @@ BEGIN
 	SELECT [id_task],
 	       [cd_task] ,
            [title_task],[ds_task],[status_task],[id_user],[createOnDate],
-           [lastModifiedOnDate]
+           [lastModifiedOnDate],
+           TotalRecords = COUNT(1) OVER()
 
 
 	FROM ToDoList.Tasks
@@ -44,5 +48,6 @@ BEGIN
 	      and @titletask IS NULL OR [title_task] = @titletask
 		  and @idUser IS NULL OR [id_user] = @idUser
 		  and @statustask IS NULL OR [status_task] = @statustask
+		  OFFSET (@PageNumber-1)*ISNULL(@PageSize,1) ROWS FETCH NEXT ISNULL(@PageSize,@@ROWCOUNT) ROWS ONLY
 END
 GO
